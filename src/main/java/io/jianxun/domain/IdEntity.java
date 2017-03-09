@@ -1,4 +1,4 @@
-package io.jianxun;
+package io.jianxun.domain;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
