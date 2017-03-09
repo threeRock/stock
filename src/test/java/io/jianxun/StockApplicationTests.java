@@ -1,8 +1,8 @@
 package io.jianxun;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.mockito.Mockito.when;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -37,7 +37,7 @@ public class StockApplicationTests {
 
 	@Test
 	public void helloPageIT() throws Exception {
-		this.mockMvc.perform(get("/hello/page")).andDo(print()).andExpect(status().isOk())
+		this.mockMvc.perform(get("/hello/page").with(user("user"))).andDo(print()).andExpect(status().isOk())
 				.andExpect(content().string(containsString("hello")));
 	}
 
